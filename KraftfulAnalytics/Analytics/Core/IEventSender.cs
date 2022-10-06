@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KraftfulAnalytics.Core
+namespace Kraftful.Analytics.Core
 {
     public interface IEventSender
     {

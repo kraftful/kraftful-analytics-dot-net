@@ -1,10 +1,10 @@
 ﻿using System;
 using Xunit;
-using KraftfulAnalytics;
-using KraftfulAnalytics.Core;
+using Kraftful.Analytics.Core;
+using Kraftful.Analytics.SDK;
 using Moq;
 
-namespace KraftfulAnalytics.Tests
+namespace Kraftful.Analytics.Tests
 {
     [Collection("KraftulAnalytics Static")]
     public class KraftfulAnalytics_Should

@@ -5,13 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Core\" />
     <None Remove="Analytics" />
+    <None Remove="Segment\" />
+    <None Remove="Analytics\" />
+    <None Remove="Analytics\Core\" />
+    <None Remove="Analytics\SDK\" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\" />
+    <Folder Include="Segment\" />
+    <Folder Include="Analytics\" />
+    <Folder Include="Analytics\Core\" />
+    <Folder Include="Analytics\SDK\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Analytics" Version="3.8.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>

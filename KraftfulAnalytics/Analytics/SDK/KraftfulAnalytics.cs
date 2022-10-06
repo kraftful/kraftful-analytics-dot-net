@@ -1,7 +1,7 @@
 ﻿using System;
-using KraftfulAnalytics.Core;
+using Kraftful.Analytics.Core;
 
-namespace KraftfulAnalytics
+namespace Kraftful.Analytics.SDK
 {
     public static class KraftfulAnalytics
     {

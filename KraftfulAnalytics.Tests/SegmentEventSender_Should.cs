@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using KraftfulAnalytics.Core;
+using Kraftful.Analytics.Core;
 using Moq;
 using Segment;
 using Xunit;
 
-namespace KraftfulAnalytics.Tests
+namespace Kraftful.Analytics.Tests
 {
     public class SegmentEventSender_Should
     {

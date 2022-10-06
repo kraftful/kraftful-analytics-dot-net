@@ -54,7 +54,6 @@ namespace Kraftful.Analytics.Tests
             appDeviceContext.Add("os", new Dict()
             {
                 { "name", "Android" },
-                { "version", "11" },
             });
             var trackAction = new Track(
                 userId,
@@ -82,7 +81,6 @@ namespace Kraftful.Analytics.Tests
             Assert.Contains($"\"type\":\"android\"", json);
             // os
             Assert.Contains($"\"name\":\"Android\"", json);
-            Assert.Contains($"\"version\":\"11\"", json);
         }
     }
 }

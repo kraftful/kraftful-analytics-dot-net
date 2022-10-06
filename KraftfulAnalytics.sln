@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1703.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KraftfulAnalytics", "KraftfulAnalytics\KraftfulAnalytics.csproj", "{8BCE119B-C5E6-45BE-9668-27DB0A556B6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kraftful.Analytics", "KraftfulAnalytics\Kraftful.Analytics.csproj", "{8BCE119B-C5E6-45BE-9668-27DB0A556B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KraftfulAnalytics.Tests", "KraftfulAnalytics.Tests\KraftfulAnalytics.Tests.csproj", "{E267CE84-CA7E-44C8-9807-3897B5BB3E07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kraftful.Analytics.Tests", "KraftfulAnalytics.Tests\Kraftful.Analytics.Tests.csproj", "{E267CE84-CA7E-44C8-9807-3897B5BB3E07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

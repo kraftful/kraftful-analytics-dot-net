@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Segment.Model
 {
-    internal class Batch
+    public class Batch
     {
         [JsonProperty(PropertyName = "writeKey")]
         internal string WriteKey { get; set; }
@@ -20,12 +20,12 @@ namespace Segment.Model
         [JsonProperty(PropertyName = "batch")]
         internal List<BaseAction> batch { get; set; }
 
-        internal Batch()
+        public Batch()
         {
             this.MessageId = Guid.NewGuid ().ToString ();
         }
 
-        internal Batch(string writeKey, List<BaseAction> batch) : this()
+        public Batch(string writeKey, List<BaseAction> batch) : this()
         {
             this.WriteKey = writeKey;
             this.batch = batch;

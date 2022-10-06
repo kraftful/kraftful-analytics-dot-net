@@ -12,7 +12,9 @@ namespace Segment.Request
             _client = client;
         }
 
+        #pragma warning disable CS1998 // async required for interface
         public async Task MakeRequest(Batch batch)
+        #pragma warning restore CS1998
         {
             foreach (var action in batch.batch)
             {

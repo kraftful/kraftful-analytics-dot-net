@@ -38,7 +38,9 @@ namespace Segment.Flush
             // do nothing
         }
 
+        #pragma warning disable CS1998 // async required for interface
         public async Task FlushAsync()
+        #pragma warning restore CS1998
         {
             // do nothing
         }

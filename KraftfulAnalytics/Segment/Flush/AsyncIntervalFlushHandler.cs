@@ -138,7 +138,9 @@ namespace Segment.Flush
             }
         }
 
+        #pragma warning disable CS1998 // async required for interface
         public async Task Process(BaseAction action)
+        #pragma warning restore CS1998
         {
             action.Size = ActionSizeCalculator.Calculate(action);
 

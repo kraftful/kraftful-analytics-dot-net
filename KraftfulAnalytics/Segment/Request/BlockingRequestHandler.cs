@@ -193,7 +193,7 @@ namespace Segment.Request
                     }
                 }
 
-                Logger.Info("Sending analytics request to Segment.io ..", new Dict
+                Logger.Info("Sending analytics request", new Dict
                 {
                     { "batch id", batch.MessageId },
                     { "json size", json.Length },
@@ -383,7 +383,7 @@ namespace Segment.Request
                 _client.RaiseFailure(action, e);
             }
 
-            Logger.Info("Segment.io request failed.", new Dict
+            Logger.Info("Analytics request failed.", new Dict
             {
                 { "batch id", batch.MessageId },
                 { "reason", e.Message },
@@ -399,7 +399,7 @@ namespace Segment.Request
                 _client.RaiseSuccess(action);
             }
 
-            Logger.Info("Segment.io request successful.", new Dict
+            Logger.Info("Analytics request successful.", new Dict
             {
                 { "batch id", batch.MessageId },
                 { "duration (ms)", duration }

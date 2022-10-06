@@ -12,7 +12,7 @@ namespace Segment.Model
             // default the context library
             this.Add("library", new Dict() {
                 { "name", "Analytics.NET" },
-                { "version", Analytics.VERSION }
+                { "version", Segment.Analytics.VERSION }
             });
         }
 

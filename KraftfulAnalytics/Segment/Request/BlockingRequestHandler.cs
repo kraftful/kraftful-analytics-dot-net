@@ -158,7 +158,7 @@ namespace Segment.Request
                 Uri uri = new Uri(_client.Config.Host + "/v1/import");
 
                 // set the current request time
-                batch.SentAt = DateTime.Now.ToUniversalTime().ToString("o");
+                batch.SentAt = DateTime.Now.ToUniversalTime().ToString(Constants.UTCFormat);
 
                 string json = JsonConvert.SerializeObject(batch);
 

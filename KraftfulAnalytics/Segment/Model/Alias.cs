@@ -11,7 +11,7 @@ namespace Segment.Model
         [JsonProperty(PropertyName = "previousId")]
         public string PreviousId { get; set; }
         
-        internal Alias(string previousId, string userId, Options options)
+        public Alias(string previousId, string userId, Options options)
             : base("alias", userId, options)
         {
             this.PreviousId = previousId;

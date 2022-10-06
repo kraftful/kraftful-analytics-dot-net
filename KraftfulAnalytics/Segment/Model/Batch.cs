@@ -9,16 +9,16 @@ namespace Segment.Model
     public class Batch
     {
         [JsonProperty(PropertyName = "writeKey")]
-        internal string WriteKey { get; set; }
+        public string WriteKey { get; set; }
 
         [JsonProperty(PropertyName="messageId")]
-        internal string MessageId { get; private set; }
+        public string MessageId { get; private set; }
 
         [JsonProperty(PropertyName="sentAt")]
-        internal string SentAt { get; set; }
+        public string SentAt { get; set; }
 
         [JsonProperty(PropertyName = "batch")]
-        internal List<BaseAction> batch { get; set; }
+        public List<BaseAction> batch { get; set; }
 
         public Batch()
         {

@@ -32,16 +32,16 @@ namespace Segment.Model
         [JsonIgnore]
         public int Size { get; set; }
 
-        internal BaseAction(string type, string UserId, Options options)
+        public BaseAction(string type, string UserId, Options options)
         {
             options = options ?? new Options ();
 
             this.Type = type;
             this.MessageId = Guid.NewGuid ().ToString();
             if (options.Timestamp.HasValue)
-                this.Timestamp = options.Timestamp.Value.ToUniversalTime().ToString("o");
+                this.Timestamp = options.Timestamp.Value.ToUniversalTime().ToString(Constants.UTCFormat);
             else
-                this.Timestamp = DateTime.Now.ToUniversalTime().ToString("o");
+                this.Timestamp = DateTime.Now.ToUniversalTime().ToString(Constants.UTCFormat);
             this.Context = options.Context;
             this.Integrations = options.Integrations;
             this.AnonymousId = options.AnonymousId;

@@ -24,8 +24,8 @@ namespace Kraftful.Analytics.Core
         {
             var info = new AppDeviceInfoData();
             info.AppVersion = AppInfo.VersionString;
-            info.DeviceId = DeviceInfo.Name;
-            info.DeviceModel = DeviceInfo.Model;
+            info.DeviceId = DeviceInfo.Model;
+            info.DeviceModel = DeviceInfo.Name;
             info.DeviceType = DeviceInfo.Platform.ToString();
             info.OsName = DeviceInfo.Platform.ToString();
             return info;

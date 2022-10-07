@@ -1,20 +1,22 @@
 ﻿using System;
 using Xunit;
-using KraftfulAnalytics;
-using KraftfulAnalytics.Core;
+using Kraftful.Analytics.Core;
+using Kraftful.Analytics.SDK;
 using Moq;
 
-namespace KraftfulAnalytics.Tests
+namespace Kraftful.Analytics.Tests
 {
     [Collection("KraftulAnalytics Static")]
     public class KraftfulAnalytics_Should
     {
         private Mock<IEventSender> mockSender;
+        private string mockAnonId = Guid.NewGuid().ToString();
 
         public KraftfulAnalytics_Should()
         {
             mockSender = new Mock<IEventSender>();
-            KraftfulAnalytics.Reset(null);
+            mockSender.SetupGet(sender => sender.AnonymousUserId).Returns(mockAnonId);
+            KraftfulAnalytics.Reset();
         }
 
         [Fact]
@@ -51,7 +53,6 @@ namespace KraftfulAnalytics.Tests
         public void TrackSignInSuccessWithNullUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             KraftfulAnalytics.TrackSignInSuccess(null);
 
@@ -63,7 +64,6 @@ namespace KraftfulAnalytics.Tests
         public void TrackSignInSuccessWithUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             var newUserId = "test-user-id-1";
             KraftfulAnalytics.TrackSignInSuccess(newUserId);
@@ -97,7 +97,6 @@ namespace KraftfulAnalytics.Tests
         public void TrackAppReturnWithNullUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             KraftfulAnalytics.TrackAppReturn(null);
 
@@ -109,7 +108,6 @@ namespace KraftfulAnalytics.Tests
         public void TrackAppReturnWithUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             var newUserId = "test-user-id-2";
             KraftfulAnalytics.TrackAppReturn(newUserId);
@@ -117,6 +115,16 @@ namespace KraftfulAnalytics.Tests
             mockSender.Verify(sender => sender.Identify(newUserId), "Should call Identify with new user id");
             mockSender.Verify(sender => sender.Track("Return"), Times.Once(), "Track should be called with Return");
             mockSender.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public void TrackScreenView()
+        {
+            KraftfulAnalytics.InitializeWith(mockSender.Object);
+
+            KraftfulAnalytics.TrackScreenView("Test Screen A");
+
+            mockSender.Verify(sender => sender.Screen("Test Screen A"), Times.Once(), "Screen should be called with correct screen name");
         }
     }
 }

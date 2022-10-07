@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+    <AssemblyName>KraftfulAnalytics.Tests</AssemblyName>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KraftfulAnalytics\KraftfulAnalytics.csproj" />
+    <None Remove="Moq" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Moq" />
+    <ProjectReference Include="..\KraftfulAnalytics\Kraftful.Analytics.csproj" />
   </ItemGroup>
 </Project>

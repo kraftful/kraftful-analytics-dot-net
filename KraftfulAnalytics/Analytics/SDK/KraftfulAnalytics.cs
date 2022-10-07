@@ -1,38 +1,30 @@
 ﻿using System;
-using KraftfulAnalytics.Core;
+using Kraftful.Analytics.Core;
 
-namespace KraftfulAnalytics
+namespace Kraftful.Analytics.SDK
 {
     public static class KraftfulAnalytics
     {
-        private static IEventSender sender = null;
+        public static IEventSender sender = null;
 
         public static bool IsInitialized {
             get;
             private set;
         }
 
-        public static string UserId {
-            get;
-            private set;
-        }
-
         static KraftfulAnalytics()
         {
-            Reset(null);
+            Reset();
         }
 
-        public static void Reset(string anonymousUserId)
+        public static void Reset()
         {
-            if (anonymousUserId == null) anonymousUserId = Guid.NewGuid().ToString();
-
             IsInitialized = false;
-            UserId = anonymousUserId;
         }
 
         public static void Initialize(string apiKey)
         {
-            var sender = new SegmentEventSender(apiKey);
+            var sender = new SegmentEventSender(apiKey, null);
             InitializeWith(sender);
         }
 
@@ -40,7 +32,6 @@ namespace KraftfulAnalytics
         {
             KraftfulAnalytics.sender = sender;
             IsInitialized = true;
-            KraftfulAnalytics.sender.Identify(UserId);
         }
 
         public static void TrackFeatureUse(string feature)
@@ -63,7 +54,6 @@ namespace KraftfulAnalytics
 
             if (userId != null)
             {
-                UserId = userId;
                 sender.Identify(userId);
             }
 
@@ -90,13 +80,18 @@ namespace KraftfulAnalytics
 
             if (userId != null)
             {
-                UserId = userId;
                 sender.Identify(userId);
             }
 
             sender.Track("Return");
         }
 
+        public static void TrackScreenView(string name)
+        {
+            if (sender == null) return;
+
+            sender.Screen(name);
+        }
     }
 }
 

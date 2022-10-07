@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kraftful.Analytics.Core;
 using Segment;
+using Segment.Model;
+using Xamarin.Essentials;
 
 namespace Kraftful.Analytics.Core
 {
@@ -10,22 +13,31 @@ namespace Kraftful.Analytics.Core
         protected static string KRAFTFUL_INGESTION_PROD_URL = "https://analytics-ingestion.kraftful.com";
         protected static string KRAFTFUL_INGESTION_STAGING_URL = "https://analytics-ingestion-staging.kraftful.com";
         protected IAnalyticsClient client;
+        protected IAppDeviceInfo deviceInfo;
 
-        protected string lastUserId;
 
-        public SegmentEventSender(string apiKey)
+        public string AnonymousUserId { get; set; }
+        public string UserId { get; set; }
+
+        public SegmentEventSender(string apiKey) : this(apiKey, null) { }
+
+        public SegmentEventSender(string apiKey, string anonymousId)
             : this(
                   new Client(apiKey, new Config(
                     host: KRAFTFUL_INGESTION_STAGING_URL
-                  ))
+                  )),
+                  new XamarinAppDeviceInfo(),
+                  anonymousId
               )
         {
 
         }
 
-        public SegmentEventSender(IAnalyticsClient client)
+        public SegmentEventSender(IAnalyticsClient client, IAppDeviceInfo deviceInfo, string anonymousId)
         {
             this.client = client;
+            this.deviceInfo = deviceInfo;
+            this.AnonymousUserId = anonymousId ?? Guid.NewGuid().ToString();
 
             Segment.Logger.Handlers += SegmentLoggerHandler;
         }
@@ -46,8 +58,8 @@ namespace Kraftful.Analytics.Core
 
         public void Identify(string userId, IDictionary<string, object> properties)
         {
-            client.Identify(userId, properties);
-            lastUserId = userId;
+            UserId = userId;
+            client.Identify(userId, null, getDefaultOptions());
         }
 
         public void Track(string name)
@@ -57,7 +69,46 @@ namespace Kraftful.Analytics.Core
 
         public void Track(string name, IDictionary<string, object> properties)
         {
-            client.Track(lastUserId, name, properties);
+            client.Track(UserId, name, properties, getDefaultOptions());
+        }
+
+        public Options getDefaultOptions()
+        {
+            var options = new Options();
+
+            // Add anonymousId
+            options.SetAnonymousId(AnonymousUserId);
+
+            // Add app/device/os context
+            options.SetContext(getDefaultContext());
+
+            return options;
+        }
+
+        public Context getDefaultContext()
+        {
+            var context = new Context();
+
+            var info = deviceInfo.GetAppDeviceInfo();
+
+            // context.app
+            context.Add("app", new Dict() {
+                { "version", info.AppVersion },
+            });
+            // context.device
+            context.Add("device", new Dict()
+            {
+                { "id", info.DeviceId },
+                { "model", info.DeviceModel },
+                { "type", info.DeviceType},
+            });
+            // context.os
+            context.Add("os", new Dict()
+            {
+                { "name", info.OsName },
+            });
+
+            return context;
         }
     }
 }

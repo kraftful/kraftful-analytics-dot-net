@@ -10,11 +10,13 @@ namespace Kraftful.Analytics.Tests
     public class KraftfulAnalytics_Should
     {
         private Mock<IEventSender> mockSender;
+        private string mockAnonId = Guid.NewGuid().ToString();
 
         public KraftfulAnalytics_Should()
         {
             mockSender = new Mock<IEventSender>();
-            KraftfulAnalytics.Reset(null);
+            mockSender.SetupGet(sender => sender.AnonymousUserId).Returns(mockAnonId);
+            KraftfulAnalytics.Reset();
         }
 
         [Fact]
@@ -51,7 +53,6 @@ namespace Kraftful.Analytics.Tests
         public void TrackSignInSuccessWithNullUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             KraftfulAnalytics.TrackSignInSuccess(null);
 
@@ -63,7 +64,6 @@ namespace Kraftful.Analytics.Tests
         public void TrackSignInSuccessWithUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             var newUserId = "test-user-id-1";
             KraftfulAnalytics.TrackSignInSuccess(newUserId);
@@ -97,7 +97,6 @@ namespace Kraftful.Analytics.Tests
         public void TrackAppReturnWithNullUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             KraftfulAnalytics.TrackAppReturn(null);
 
@@ -109,7 +108,6 @@ namespace Kraftful.Analytics.Tests
         public void TrackAppReturnWithUserId()
         {
             KraftfulAnalytics.InitializeWith(mockSender.Object);
-            mockSender.Verify(sender => sender.Identify(KraftfulAnalytics.UserId), "Should call Identify with default UserId");
 
             var newUserId = "test-user-id-2";
             KraftfulAnalytics.TrackAppReturn(newUserId);

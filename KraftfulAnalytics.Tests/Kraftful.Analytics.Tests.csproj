@@ -5,6 +5,7 @@
 
     <IsPackable>false</IsPackable>
     <AssemblyName>KraftfulAnalytics.Tests</AssemblyName>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,6 +5,9 @@ namespace Kraftful.Analytics.Core
 {
     public interface IEventSender
     {
+        string AnonymousUserId { get; set; }
+        string UserId { get; set; }
+
         void Track(string name);
         void Track(string name, IDictionary<string, object> properties);
         void Identify(string userId);

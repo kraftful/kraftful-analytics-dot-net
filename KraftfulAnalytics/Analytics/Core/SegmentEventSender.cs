@@ -24,7 +24,7 @@ namespace Kraftful.Analytics.Core
         public SegmentEventSender(string apiKey, string anonymousId)
             : this(
                   new Client(apiKey, new Config(
-                    host: KRAFTFUL_INGESTION_STAGING_URL
+                    host: KRAFTFUL_INGESTION_PROD_URL
                   )),
                   new XamarinAppDeviceInfo(),
                   anonymousId

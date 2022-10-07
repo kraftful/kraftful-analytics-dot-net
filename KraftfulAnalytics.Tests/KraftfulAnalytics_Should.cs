@@ -116,6 +116,16 @@ namespace Kraftful.Analytics.Tests
             mockSender.Verify(sender => sender.Track("Return"), Times.Once(), "Track should be called with Return");
             mockSender.VerifyNoOtherCalls();
         }
+
+        [Fact]
+        public void TrackScreenView()
+        {
+            KraftfulAnalytics.InitializeWith(mockSender.Object);
+
+            KraftfulAnalytics.TrackScreenView("Test Screen A");
+
+            mockSender.Verify(sender => sender.Screen("Test Screen A"), Times.Once(), "Screen should be called with correct screen name");
+        }
     }
 }
 

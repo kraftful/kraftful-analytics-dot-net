@@ -72,6 +72,16 @@ namespace Kraftful.Analytics.Core
             client.Track(UserId, name, properties, getDefaultOptions());
         }
 
+        public void Screen(string name)
+        {
+            Screen(name, null);
+        }
+
+        public void Screen(string name, IDictionary<string, object> properties)
+        {
+            client.Screen(UserId, name, properties, getDefaultOptions());
+        }
+
         public Options getDefaultOptions()
         {
             var options = new Options();

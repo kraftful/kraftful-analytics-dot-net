@@ -86,6 +86,12 @@ namespace Kraftful.Analytics.SDK
             sender.Track("Return");
         }
 
+        public static void TrackScreenView(string name)
+        {
+            if (sender == null) return;
+
+            sender.Screen(name);
+        }
     }
 }
 

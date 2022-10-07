@@ -12,6 +12,8 @@ namespace Kraftful.Analytics.Core
         void Track(string name, IDictionary<string, object> properties);
         void Identify(string userId);
         void Identify(string userId, IDictionary<string, object> properties);
+        void Screen(string name);
+        void Screen(string name, IDictionary<string, object> properties);
     }
 }
 

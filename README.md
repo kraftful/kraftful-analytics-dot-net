@@ -16,7 +16,7 @@ The KraftfulAnalytics API exposes the following methods:
 Add the initialize call to your App's `init()` method.
 
 ```csharp
-using KraftfulAnalytics;
+using Kraftful.Analytics.SDK;
 
 KraftfulAnalytics.Initialize("YOUR_API_KEY");
 ```
@@ -65,6 +65,15 @@ Add `TrackAppReturn(...)` calls when your app is foregrounded. This should be do
 ```csharp
 // Track return to the app with the logged in userId
 KraftfulAnalytics.TrackAppReturn(authState.loggedInUserId);
+```
+
+### `TrackScreenView(string name)`
+
+Add `TrackScreenView(...)` calls when your app loads a new screen.
+
+```csharp
+// Track screen views
+KraftfulAnalytics.TrackScreenView("Home");
 ```
 
 ## License

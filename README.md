@@ -1,8 +1,22 @@
 # Kraftful Analytics for .Net
 
-## Setup
+## Setup - Using NuGet
 
-Add the package as a dependency to your solution;
+Add the `Kraftful.Analytics` package to your solution;
+
+1. Project -> Manage NuGet Packages.
+2. Search for and select the "Kraftful.Analytics" package.
+
+## Setup - Using DLL Reference
+
+Add the `KraftfulAnalytics.dll` reference to your solution;
+
+1. Download the latest zip file containing our published dll files from the [Releases](https://github.com/kraftful/kraftful-analytics-dot-net/releases) page. You can select builds for .Net Standard 2.0 or 2.1 frameworks.
+2. Add the `KraftfulAnalytics.dll` reference by right clicking on the appropriate project in your solution and navigating to "Add reference..." and using the "browse" button to select the file.
+
+## Setup - Using Source
+
+Add the source project as a dependency to your solution;
 
 1. `git clone https://github.com/kraftful/kraftful-analytics-dot-net.git`
 2. Import the `KraftfulAnalytics` project into your .Net solution and add it as a reference to your project.

@@ -4,6 +4,15 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <AssemblyName>KraftfulAnalytics</AssemblyName>
     <ReleaseVersion>1.1.0</ReleaseVersion>
+    <!-- NuGet Publishing Information -->
+    <Title>Kraftful Analytics for .Net</Title>
+    <PackageId>Kraftful.Analytics</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>Kraftful Engineering (info@kraftful.com)</Authors>
+    <Company>Kraftful</Company>
+    <Description>Kraftful Analytics for .Net and Xamarin apps.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kraftful/kraftful-analytics-dot-net</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -26,12 +26,12 @@ KraftfulAnalytics.Initialize("YOUR_API_KEY");
 Add the `TrackSignIn(...)` calls to your login and registration flows. Typically the start call happens when your login/register screen loads and the success call happens when the user successfully logs in/registers.
 
 ```csharp
-// Call trackSignInStart when your sign in screen appears
+// Call TrackSignInStart when your sign in screen appears
 KraftfulAnalytics.TrackSignInStart();
 ```
 
 ```csharp
-// Call trackSignInSuccess when the user is authenticated
+// Call TrackSignInSuccess when the user is authenticated
 KraftfulAnalytics.TrackSignInSuccess(authState.loggedInUserId);
 ```
 
@@ -40,12 +40,12 @@ KraftfulAnalytics.TrackSignInSuccess(authState.loggedInUserId);
 Add the `TrackConnection(...)` calls to your device connection flows. Similar to the sign in tracking, these are typically added when the first screen in your device connection flow loads and then is successfully connected.
 
 ```csharp
-// Call trackConnectionStart when your connection page appears
+// Call TrackConnectionStart when your connection page appears
 KraftfulAnalytics.TrackConnectionStart();
 ```
 
 ```csharp
-// Call trackConnectionStart when your connection page appears
+// Call TrackConnectionStart when your connection page appears
 KraftfulAnalytics.TrackConnectionSuccess();
 ```
 

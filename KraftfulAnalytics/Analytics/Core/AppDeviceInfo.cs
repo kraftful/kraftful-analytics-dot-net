@@ -15,7 +15,7 @@ namespace Kraftful.Analytics.Core
 
     public interface IAppDeviceInfo
     {
-        public AppDeviceInfoData GetAppDeviceInfo();
+        AppDeviceInfoData GetAppDeviceInfo();
     }
 
     public class XamarinAppDeviceInfo: IAppDeviceInfo
